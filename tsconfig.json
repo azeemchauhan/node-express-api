@@ -2,6 +2,7 @@
   "compilerOptions": {
     "target": "es2016",
     "module": "commonjs",
+    "resolveJsonModule": true,
     "esModuleInterop": true,
     "forceConsistentCasingInFileNames": true,
     "strict": true,
@@ -17,5 +18,6 @@
       "@data/*": ["src/data/*"],
     },
     "outDir": "./dist"
-  }
+  },
+  "include": ["src/**/*.ts", "tests/**/*.test.ts"]
 }
