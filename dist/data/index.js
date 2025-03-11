@@ -1,0 +1,15 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+exports.depositPayment = exports.getAllUnpaidJobs = exports.getProfileById = exports.getJobById = exports.getActiveContracts = exports.getBestProfession = exports.getBestClients = void 0;
+const adminQueries_1 = require("@data/adminQueries");
+Object.defineProperty(exports, "getBestClients", { enumerable: true, get: function () { return adminQueries_1.getBestClients; } });
+Object.defineProperty(exports, "getBestProfession", { enumerable: true, get: function () { return adminQueries_1.getBestProfession; } });
+const contractQueries_1 = require("@data/contractQueries");
+Object.defineProperty(exports, "getActiveContracts", { enumerable: true, get: function () { return contractQueries_1.getActiveContracts; } });
+const profileQueries_1 = require("@data/profileQueries");
+Object.defineProperty(exports, "getProfileById", { enumerable: true, get: function () { return profileQueries_1.getProfileById; } });
+const jobQueries_1 = require("@data/jobQueries");
+Object.defineProperty(exports, "getJobById", { enumerable: true, get: function () { return jobQueries_1.getJobById; } });
+Object.defineProperty(exports, "getAllUnpaidJobs", { enumerable: true, get: function () { return jobQueries_1.getAllUnpaidJobs; } });
+const paymentQueries_1 = require("@data/paymentQueries");
+Object.defineProperty(exports, "depositPayment", { enumerable: true, get: function () { return paymentQueries_1.depositPayment; } });
