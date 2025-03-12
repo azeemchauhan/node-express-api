@@ -14,7 +14,7 @@ app.use(expressContext());
 
 app.use('/contracts', addUserProfile, contractRouter);
 app.use('/jobs', addUserProfile, jobRouter);
-app.use('/balance', addUserProfile, paymentRouter);
+app.use('/balances', addUserProfile, paymentRouter);
 app.use('/admin', adminRouter);
 
 app.use(errorHandler);

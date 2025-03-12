@@ -9,7 +9,7 @@ const numberValidator = (type: string) => {
   return (fieldName: string) => {
     return validationOn(fieldName)
       .customSanitizer(async (jobId: string) => {
-        const parsedJobID = parseInt(jobId);
+        const parsedJobID = parseFloat(jobId);
         if (isNaN(parsedJobID)) {
           const message = `Invalid value passed for ${fieldName}`;
           throw new AppError(400, message);

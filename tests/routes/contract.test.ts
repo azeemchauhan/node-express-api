@@ -1,12 +1,12 @@
 import request from 'supertest';
 import express, { Express, NextFunction, Request, Response } from 'express';
 import expressContext from 'express-request-context';
-import { getActiveContracts, getContract } from '@data/contractQueries';
+import { getActiveContracts, getContract } from '@controllers/index';
 import contractRouter from '@routes/contract';
 import errorHandler from '@middlewares/errorHandler';
 
-jest.mock('@data/contractQueries');
 jest.mock('@middlewares/errorHandler');
+jest.mock('@controllers/index');
 
 const addClientProfile = (req: Request, response: Response, next: NextFunction) => {
   // Adding Current User Profile to Request context

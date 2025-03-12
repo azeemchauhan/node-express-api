@@ -3,7 +3,7 @@ const { pathsToModuleNameMapper } = require('ts-jest');
 module.exports = {
   preset: 'ts-jest',
   testEnvironment: 'node',
-  testMatch: ['**/tests/**/*.test.ts'], // Only test files inside `tests/` folder
+  testMatch: ['**/tests/**/*.test.ts'],
   moduleNameMapper: pathsToModuleNameMapper(
     {
       "@config/*": ["src/config/*"],
@@ -11,8 +11,7 @@ module.exports = {
       "@routes/*": ["src/routes/*"],
       "@models/*": ["./src/models/*"],
       "@middlewares/*": ["src/middlewares/*"],
-      "@utils/*": ["src/utils/*"],
-      "@data/*": ["src/data/*"],
+      "@utils/*": ["src/utils/*"]
     },
     { prefix: '<rootDir>/' }),
     globalSetup: "<rootDir>/tests/setup.api.ts",

@@ -1,9 +1,9 @@
 /**
  * All the Routes related to Contracts
  */
-import express, { Request, Response } from 'express';
+import express, { NextFunction, Request, Response } from 'express';
 import { AppError } from '@utils/appError';
-import { getActiveContracts, getContract } from '@data/contractQueries';
+import { getActiveContracts, getContract } from '@controllers/index';
 import { numberValidatorParam } from '@utils/validations';
 
 let router = express.Router({ mergeParams: true });
@@ -24,18 +24,16 @@ router.get('/', async (request: Request, response: Response) => {
 /**
 * Return the contract only if it belongs to the profile making the request.
 */
-router.get('/:id', numberValidatorParam('id'), async (request: Request, response: Response) => {
+router.get('/:id', numberValidatorParam('id'), async (request: Request, response: Response, next: NextFunction) => {
   const userProfile = request.context.user;
   const userType = userProfile.type == 'client' ? 'Client' : 'Contractor';
   const contractId = parseInt(request.params.id);
-  
+
   const contract = await getContract(userProfile.id, contractId, userType)
 
-  if (!contract) {
-    throw new AppError(404, `contract is not exist for ${userType}: ${userProfile.id}`);
-  }
+  if (contract) response.json(contract);
 
-  response.json(contract);
+  next(new AppError(404, `contract is not exist for ${userType}: ${userProfile.id}`));
 });
 
 export default router;

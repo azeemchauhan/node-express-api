@@ -7,7 +7,7 @@ import cacheClient from '@config/cache';
 type JobAttributes = {
   id: number;
   price: number;
-  contratorId: number;
+  contractorId: number;
 };
 
 const getJobById = async (jobId: number): Promise<JobAttributes> => {
@@ -26,7 +26,7 @@ const getJobById = async (jobId: number): Promise<JobAttributes> => {
     attributes: [
       'id',
       'price',
-      [db.col('Contract.Contractor.id'), 'contratorId'],
+      [db.col('Contract.Contractor.id'), 'contractorId'],
     ],
     where: { id: jobId },
     raw: true

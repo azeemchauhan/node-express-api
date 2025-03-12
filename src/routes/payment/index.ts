@@ -6,7 +6,7 @@ import express, { NextFunction, Request, Response } from 'express';
 import { AppError } from '@utils/appError';
 import logger from '@utils/logger';
 import { numberValidatorParam } from '@utils/validations';
-import { depositPayment } from '@data/paymentQueries';
+import { depositPayment } from '@controllers/index';
 
 const router = express.Router({ mergeParams: true });
 /**

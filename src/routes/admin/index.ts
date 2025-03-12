@@ -3,7 +3,7 @@
 */
 import express, { Request, Response } from 'express';
 
-import { getBestClients, getBestProfession } from '@data/adminQueries';
+import { getBestProfession, getBestClients } from '@controllers/index';
 import { convertToDate } from '@utils/guards';
 import { dateValidatorQuery, numberValidatorQuery } from '@utils/validations';
 

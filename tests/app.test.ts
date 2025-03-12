@@ -1,9 +1,10 @@
 import request from 'supertest';
 import express, { Express, Request, Response, NextFunction } from 'express';
 import { contractRouter} from '@routes/index';
-import { getActiveContracts, getContract } from '@data/contractQueries';
+import  * as controller from '@controllers/index';
 import app from '../src/app';
 import errorHandler from '@middlewares/errorHandler';
+
 
 jest.mock('@middlewares/addUserProfile', () => ({
   addUserProfile: (req: Request, response: Response, next: NextFunction) => {
@@ -12,15 +13,12 @@ jest.mock('@middlewares/addUserProfile', () => ({
   }
 }));
 jest.mock('@middlewares/errorHandler');
-jest.mock('@data/contractQueries');
-jest.mock('@middlewares/errorHandler');
+jest.spyOn(controller, 'getActiveContracts').mockImplementation(jest.fn());
 
 
 describe('App', () => {
 
   beforeEach(() => {
-    (getActiveContracts as jest.Mock).mockClear();
-    (getContract as jest.Mock).mockClear();
     (errorHandler as jest.Mock).mockClear();
   });
 

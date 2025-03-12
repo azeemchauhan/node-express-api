@@ -8,8 +8,7 @@ import express, { NextFunction, Request, Response } from 'express';
 import { AppError } from '@utils/appError';
 import logger from '@utils/logger';
 import { numberValidatorParam } from '@utils/validations';
-import { getAllUnpaidJobs, getJobById } from '@data/jobQueries';
-import { updateClientBalance } from '@data/profileQueries';
+import { getAllUnpaidJobs, getJobById, updateClientBalance } from '@controllers/index';
 
 const router = express.Router({ mergeParams: true });
 
@@ -21,7 +20,7 @@ const router = express.Router({ mergeParams: true });
 router.get('/unpaid', async (request: Request, response: Response) => {
   const userProfile = request.context.user;
   const userType = userProfile.type == 'client' ? 'Client' : 'Contractor';
-
+  
   const unpaidJobs = await getAllUnpaidJobs(userProfile.id, userType);
 
   response.json(unpaidJobs)
@@ -34,19 +33,18 @@ router.get('/unpaid', async (request: Request, response: Response) => {
 router.post('/:job_id/pay', numberValidatorParam('job_id'), async (request: Request, response: Response, next: NextFunction) => {
   const userProfile = request.context.user;
   const jobId = parseInt(request.params.job_id);
-  
+
   const userType = userProfile.type == 'client' ? 'Client' : 'Contractor';
 
   if (userType === 'Contractor') throw new AppError(401, "Unauthorized Users");
-
+  
   const jobResult = await getJobById(jobId);
   const jobAmount = jobResult?.price;
-  const contractorId = jobResult?.contratorId;
-
-  if (!jobAmount) throw new AppError(400, `Job is not exists for Job ID: ${jobId}`);
-
+  const contractorId = jobResult?.contractorId;
 
   try {
+    if (!jobAmount) throw new AppError(400, `Job is not exists for Job ID: ${jobId}`)
+
     await updateClientBalance(userProfile.id, contractorId, jobAmount);
     response.status(200).json({ message: `Payment of ${jobAmount} is successfull to Contractor ${contractorId}` })
   } catch (err) {

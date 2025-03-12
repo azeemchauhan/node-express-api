@@ -15,9 +15,9 @@
       "@models/*": ["src/models/*"],
       "@middlewares/*": ["src/middlewares/*"],
       "@utils/*": ["src/utils/*"],
-      "@data/*": ["src/data/*"],
+      "@data/*": ["src/controllers/*"],
     },
     "outDir": "./dist"
   },
-  "include": ["src/**/*.ts", "tests/**/*.test.ts", "scripts/seedDb.ts", "typings/**/*.ts", "tests/setup.api.ts"]
+  "include": ["src/**/*.ts", "scripts/seedDb.ts"]
 }
