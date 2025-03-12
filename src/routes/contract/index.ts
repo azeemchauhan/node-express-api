@@ -6,7 +6,7 @@ import { AppError } from '@utils/appError';
 import { getActiveContracts, getContract } from '@data/contractQueries';
 import { numberValidatorParam } from '@utils/validations';
 
-const router = express.Router({ mergeParams: true });
+let router = express.Router({ mergeParams: true });
 
 /**
  * Returns a list of contracts belonging to a user (client or contractor).
@@ -28,14 +28,14 @@ router.get('/:id', numberValidatorParam('id'), async (request: Request, response
   const userProfile = request.context.user;
   const userType = userProfile.type == 'client' ? 'Client' : 'Contractor';
   const contractId = parseInt(request.params.id);
-
+  
   const contract = await getContract(userProfile.id, contractId, userType)
 
   if (!contract) {
     throw new AppError(404, `contract is not exist for ${userType}: ${userProfile.id}`);
   }
 
-  response.json(contract)
+  response.json(contract);
 });
 
 export default router;

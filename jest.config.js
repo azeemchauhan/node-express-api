@@ -9,10 +9,11 @@ module.exports = {
       "@config/*": ["src/config/*"],
       "@controllers/*": ["src/controllers/*"],
       "@routes/*": ["src/routes/*"],
-      "@models/*": ["src/models/*"],
+      "@models/*": ["./src/models/*"],
       "@middlewares/*": ["src/middlewares/*"],
       "@utils/*": ["src/utils/*"],
       "@data/*": ["src/data/*"],
     },
     { prefix: '<rootDir>/' }),
+    globalSetup: "<rootDir>/tests/setup.api.ts",
 };

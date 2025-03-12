@@ -19,5 +19,5 @@
     },
     "outDir": "./dist"
   },
-  "include": ["src/**/*.ts", "tests/**/*.test.ts"]
+  "include": ["src/**/*.ts", "tests/**/*.test.ts", "scripts/seedDb.ts", "typings/**/*.ts", "tests/setup.api.ts"]
 }

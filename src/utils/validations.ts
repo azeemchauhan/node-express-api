@@ -4,14 +4,14 @@ import { AppError } from "./appError";
 
 ///////////////// VALIDATORS ////////////////////////
 const numberValidator = (type: string) => {
-  let validationOn = type === 'params' ? param : query
+  let validationOn = (type === 'params') ? param : query
 
   return (fieldName: string) => {
     return validationOn(fieldName)
       .customSanitizer(async (jobId: string) => {
         const parsedJobID = parseInt(jobId);
         if (isNaN(parsedJobID)) {
-          const message = `Invalid value passed in: ${param}`;
+          const message = `Invalid value passed for ${fieldName}`;
           throw new AppError(400, message);
         }
 

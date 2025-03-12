@@ -7,9 +7,8 @@ import logger from "@utils/logger";
  */
 const errorHandler = (err: AppError, request: Request, response: Response, next: NextFunction) => {
   logger.error(err.stack);
-
   let statusCode = err.statusCode || 500;
-  let message = err.message || "Internal Server Error";
+  let message = err.message;
 
   if (err.name === "ValidationError") {
     statusCode = 400;
@@ -17,7 +16,7 @@ const errorHandler = (err: AppError, request: Request, response: Response, next:
   } else if (err.name === "ECONNREFUSED") {
     statusCode = 503; // Service Unavailable
     message = 'Database connection failed';
-  } else if (err instanceof AppError) {
+  } else {
     statusCode = err.statusCode;
     message = process.env.NODE_ENV === "production" ? "Something went wrong" : err.message;
   }
@@ -28,6 +27,8 @@ const errorHandler = (err: AppError, request: Request, response: Response, next:
       message: message
     }
   })
+
+  next();
 };
 
 export default errorHandler;

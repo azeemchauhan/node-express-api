@@ -9,7 +9,7 @@ import errorHandler from '@middlewares/errorHandler';
 const app: Express = express();
 
 app.use(express.json());
-// This will enable the 'context' object for you.
+// 'context' object in request
 app.use(expressContext()); 
 
 app.use('/contracts', addUserProfile, contractRouter);
