@@ -15,14 +15,14 @@ async function seed() {
       firstName: 'Harry',
       lastName: 'Potter',
       profession: 'Wizard',
-      balance: 1150,
+      balance: 100,
       type: 'client'
     }),
     Profile.create({
       id: 2,
       firstName: 'Mr',
-      lastName: 'Robot',
-      profession: 'Hacker',
+      lastName: 'Zombie',
+      profession: 'Killer',
       balance: 231.11,
       type: 'client'
     }),
@@ -36,24 +36,24 @@ async function seed() {
     }),
     Profile.create({
       id: 4,
-      firstName: 'Ash',
-      lastName: 'Kethcum',
-      profession: 'Pokemon master',
+      firstName: 'Debi',
+      lastName: 'Opera',
+      profession: 'scrum master',
       balance: 1.3,
       type: 'client'
     }),
     Profile.create({
       id: 5,
-      firstName: 'John',
-      lastName: 'Lenon',
+      firstName: 'Arijeet',
+      lastName: 'Singh',
       profession: 'Musician',
-      balance: 64,
+      balance: 104,
       type: 'contractor'
     }),
     Profile.create({
       id: 6,
-      firstName: 'Linus',
-      lastName: 'Torvalds',
+      firstName: 'Azeem',
+      lastName: 'Chauhan',
       profession: 'Programmer',
       balance: 1214,
       type: 'contractor'
@@ -68,71 +68,71 @@ async function seed() {
     }),
     Profile.create({
       id: 8,
-      firstName: 'Aragorn',
-      lastName: 'II Elessar Telcontarvalds',
+      firstName: 'Mose',
+      lastName: 'Maa',
       profession: 'Fighter',
       balance: 314,
       type: 'contractor'
     }),
     Contract.create({
       id: 1,
-      terms: 'bla bla bla',
+      terms: 'Contract Terms 1',
       status: 'terminated',
       ClientId: 1,
       ContractorId: 5
     }),
     Contract.create({
       id: 2,
-      terms: 'bla bla bla',
+      terms: 'Contract Terms 2',
       status: 'in_progress',
       ClientId: 1,
       ContractorId: 6
     }),
     Contract.create({
       id: 3,
-      terms: 'bla bla bla',
+      terms: 'Contract Terms 3',
       status: 'in_progress',
       ClientId: 2,
       ContractorId: 6
     }),
     Contract.create({
       id: 4,
-      terms: 'bla bla bla',
+      terms: 'Contract Terms 4',
       status: 'in_progress',
       ClientId: 2,
       ContractorId: 7
     }),
     Contract.create({
       id: 5,
-      terms: 'bla bla bla',
+      terms: 'Contract Terms 5',
       status: 'new',
       ClientId: 3,
       ContractorId: 8
     }),
     Contract.create({
       id: 6,
-      terms: 'bla bla bla',
+      terms: 'Contract Terms 6',
       status: 'in_progress',
       ClientId: 3,
       ContractorId: 7
     }),
     Contract.create({
       id: 7,
-      terms: 'bla bla bla',
+      terms: 'Contract Terms 7',
       status: 'in_progress',
       ClientId: 4,
       ContractorId: 7
     }),
     Contract.create({
       id: 8,
-      terms: 'bla bla bla',
+      terms: 'Contract Terms 8',
       status: 'in_progress',
       ClientId: 4,
       ContractorId: 6
     }),
     Contract.create({
       id: 9,
-      terms: 'bla bla bla',
+      terms: 'Contract Terms 9',
       status: 'in_progress',
       ClientId: 4,
       ContractorId: 8

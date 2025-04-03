@@ -1,13 +1,13 @@
 {
-  "name": "deel-task",
+  "name": "node-express-api",
   "version": "0.1.0",
-  "private": true,
+  "private": false,
   "scripts": {
     "build": "tsc --project tsconfig.json && tsc-alias -p tsconfig.json",
     "dev": "nodemon -r tsconfig-paths/register src/server.ts",
     "start": "node ./dist/src/server.js",
     "seed": "npm run build && node dist/scripts/seedDb.js",
-    "test": "jest --coverage",
+    "test": "jest --coverage --silent",
     "e2e": "npm run seed && mocha e2e/test-suits.js"
   },
   "dependencies": {
@@ -42,5 +42,9 @@
     "tsc-alias": "^1.8.11",
     "typescript": "^5.8.2"
   },
-  "engineStrict": true
+  "engineStrict": true,
+  "author": {
+    "name": "Azeem Chauhan",
+    "email": "azeemchauhan@gmail.com"
+  }
 }

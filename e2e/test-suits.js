@@ -1,4 +1,6 @@
-// Assuming your Express app is running on localhost:3001
+/**
+ * This API tests assume that Express app is running on localhost:3001
+ */
 const request = require('supertest');
 const { expect } = require('chai');
 
@@ -10,7 +12,7 @@ describe('API Tests', () => {
     const expectedResponse = [
       {
         "id": 2,
-        "terms": "bla bla bla",
+        "terms": "Contract Terms 2",
         "status": "in_progress",
         "ContractorId": 6,
         "ClientId": 1
@@ -26,7 +28,7 @@ describe('API Tests', () => {
     const API_PATH = "/contracts/1";
     const expectedResponse = {
       "id": 1,
-      "terms": "bla bla bla",
+      "terms": "Contract Terms 1",
       "status": "terminated",
       "ContractorId": 5,
       "ClientId": 1
@@ -42,7 +44,7 @@ describe('API Tests', () => {
     const expectedResponse = [
       {
         "id": 2,
-        "terms": "bla bla bla",
+        "terms": "Contract Terms 2",
         "status": "in_progress",
         "ContractorId": 6,
         "ClientId": 1
@@ -82,12 +84,12 @@ describe('API Tests', () => {
     const expectedResponse = [
       {
         "id": 7,
-        "fullName": "Ash Kethcum",
+        "fullName": "Debi Opera",
         "paid": 2020
       },
       {
         "id": 3,
-        "fullName": "Mr Robot",
+        "fullName": "Mr Zombie",
         "paid": 442
       }
     ]
