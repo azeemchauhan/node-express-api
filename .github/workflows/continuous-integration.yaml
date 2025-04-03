@@ -1,21 +1,33 @@
 name: Express API CI
 run-name: Express API CI is running.
-on: push:
-    branches: ["main"]
+on: 
+    push:
+        branches:
+            - main
 jobs:
   build:
     runs-on: ubuntu-latest
+    strategy:
+        matrix:
+            node-version: [16, 18]
     steps:
-      - name: Checkout the code
+      - name: Checkout code
         uses: actions/checkout@v3
+        
       - name: Install NodeJs
         uses: actions/setup-node@v3
-      - name: Install Depedencies
-        uses: npm install
+        with:
+          node-version: ${{ matrix.node-version }}
+          
+      - name: Install dependencies
+        run: npm install
+        
       - name: Build
-        uses: npm run build
+        run: npm run build
+        
       - name: Test
-        uses: npm run test
+        run: npm run test
+        
       - name: Run E2E tests
         run: |
           npm run start &
