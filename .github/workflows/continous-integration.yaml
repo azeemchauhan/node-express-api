@@ -1,0 +1,26 @@
+name: Express API CI
+run-name: Express API CI is running.
+on: push:
+    branches: ["main"]
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout the code
+        uses: actions/checkout@v3
+      - name: Install NodeJs
+        uses: actions/setup-node@v3
+      - name: Install Depedencies
+        uses: npm install
+      - name: Build
+        uses: npm run build
+      - name: Test
+        uses: npm run test
+      - name: Run E2E tests
+        run: |
+          npm run start &
+          echo "Server is Running ....."
+          sleep 10 # wait 10 seconds
+          npm run e2e
+    
+  
